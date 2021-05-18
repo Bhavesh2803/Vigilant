@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="@dimen/_72sdp"
+    android:layout_height="@dimen/_70sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:background="@drawable/grey_boarder_bg"
+    android:layout_marginEnd="@dimen/_20sdp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/add_img"
+        android:padding="@dimen/_15sdp"/>
+</RelativeLayout>

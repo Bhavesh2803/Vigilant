@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CreateReport.CreateReportActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:padding="@dimen/_3sdp"
+            android:src="@drawable/back_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Create Report"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/header"
+       android:scrollbars="none">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="@dimen/_20sdp"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:orientation="vertical">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Upload Images of incident"
+               android:textColor="@color/text_color"
+               android:textSize="@dimen/_12ssp"/>
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/recyl_upload_image"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginVertical="@dimen/_10sdp"/>
+
+           <EditText
+               android:id="@+id/edt_descriptin"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/_100sdp"
+               android:background="@drawable/edit_field_bg"
+               android:hint="Description..."
+               android:padding="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:gravity="start"
+               android:textColorHint="@color/text_color"
+               android:textSize="@dimen/_10ssp"
+               android:textStyle="bold" />
+
+           <EditText
+               android:id="@+id/edt_address"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/_15sdp"
+               android:background="@drawable/edit_field_bg"
+               android:hint="Indore,Madhya Pradesh, India"
+               android:padding="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:textColorHint="@color/text_color"
+               android:textSize="@dimen/_10ssp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Upload videos of incident"
+               android:layout_marginVertical="@dimen/_10sdp"
+               android:textColor="@color/text_color"
+               android:textSize="@dimen/_12ssp"/>
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/recyl_upload_video"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_10sdp"/>
+
+           <EditText
+               android:id="@+id/edt_passport"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/_10sdp"
+               android:background="@drawable/edit_field_bg"
+               android:hint="Passport Number (Optional)"
+               android:padding="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:textColorHint="@color/text_color"
+               android:textSize="@dimen/_10ssp"
+               android:textStyle="bold" />
+
+           <EditText
+               android:id="@+id/edt_tazkera_number"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/_15sdp"
+               android:background="@drawable/edit_field_bg"
+               android:hint="Tazkera Number (Optional)"
+               android:padding="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:textColorHint="@color/text_color"
+               android:textSize="@dimen/_10ssp"
+               android:textStyle="bold" />
+           <EditText
+               android:id="@+id/edt_nationality"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/_15sdp"
+               android:background="@drawable/edit_field_bg"
+               android:hint="Nationality (Optional)"
+               android:padding="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:textColorHint="@color/text_color"
+               android:textSize="@dimen/_10ssp"
+               android:textStyle="bold" />
+           <EditText
+               android:id="@+id/edt_mobile_number"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/_15sdp"
+               android:background="@drawable/edit_field_bg"
+               android:hint="Mobile Number (Optional)"
+               android:padding="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:textColorHint="@color/text_color"
+               android:textSize="@dimen/_10ssp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Upload photos of Tourist"
+               android:layout_marginVertical="@dimen/_10sdp"
+               android:textColor="@color/text_color"
+               android:textSize="@dimen/_12ssp"/>
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/recyl_image_tourist"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_10sdp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Alert"
+               android:layout_marginVertical="@dimen/_10sdp"
+               android:textColor="@color/black"
+               android:textSize="@dimen/_12ssp"/>
+
+           <RadioGroup
+               android:id="@+id/alert_type_radio"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="10"
+               android:orientation="horizontal">
+
+               <RadioButton
+                   android:id="@+id/radio_high"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="4"
+                   android:text="High"
+                   android:textColor="@color/black"
+                   android:textSize="@dimen/_12sdp"
+                   android:buttonTint="@color/theme_color"/>
+
+               <RadioButton
+                   android:id="@+id/radio_medium"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="4"
+                   android:text="Medium"
+                   android:textColor="@color/black"
+                   android:textSize="@dimen/_12sdp"
+                   android:buttonTint="@color/theme_color"/>
+
+               <RadioButton
+                   android:id="@+id/radio_low"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="2"
+                   android:text="Low"
+                   android:textColor="@color/black"
+                   android:textSize="@dimen/_12sdp"
+                   android:buttonTint="@color/theme_color"/>
+
+           </RadioGroup>
+
+           <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/_35sdp"
+               android:layout_marginVertical="@dimen/_30sdp"
+               android:layout_marginHorizontal="@dimen/_5sdp"
+               app:cardElevation="@dimen/_5sdp">
+
+               <TextView
+                   android:id="@+id/tv_submit"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_centerVertical="true"
+                   android:background="@color/theme_color"
+                   android:gravity="center"
+                   android:text="Submit"
+                   android:textColor="@color/white"
+                   android:textSize="@dimen/_14ssp"
+                   android:textStyle="bold" />
+           </androidx.cardview.widget.CardView>
+       </LinearLayout>
+   </ScrollView>
+</RelativeLayout>
