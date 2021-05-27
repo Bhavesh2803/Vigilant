@@ -13,11 +13,12 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.facebook.*
-import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
-import com.mssinfotech.mycity.Utility.CommonFunction
+import com.mssinfotech.mycity.Utility.CommonFunction.showErrorToast
+import com.mssinfotech.mycity.Utility.CommonFunction.showSuccessToast
+import com.vigilant.Home.DashboardActivity
 import com.vigilant.Network.basic.APICallback
 import com.vigilant.Network.rest.ServiceGenerator
 import com.vigilant.Requests.SocialSignUpRequest
@@ -128,7 +129,7 @@ class FaceBookLoginActivity : AppCompatActivity() {
                                     if (image_uri != null) //AppSession.save(ct, Constants.PIC1, "" + image_uri);
                                         if (full_name != null && !full_name.equals("", ignoreCase = true)) //AppSession.save(ct, Constants.USER_NAME, full_name);
                                         //AppSession.save(ct, Constants.PIC1, image_uri.toString());
-                                            CommonFunction.showToast(ct, full_name + " " + account_id)
+                                         //   CommonFunction.showToast(ct, full_name + " " + account_id)
                                     makeRequestForSignup()
                                     LoginManager.getInstance().logOut()
                                     if (email == null || email.equals("", ignoreCase = true)) {
@@ -195,13 +196,13 @@ class FaceBookLoginActivity : AppCompatActivity() {
         socialsignUp.enqueue(object : APICallback<SocialSingUpDTO>(this, true) {
 
             override fun onSuccess(response: Response<SocialSingUpDTO>) {
-                CommonFunction.showToast(ct, response.message())
+              showSuccessToast(ct, response.message())
                 startActivity(Intent(this@FaceBookLoginActivity, DashboardActivity::class.java))
                 finishAffinity()
             }
 
             override fun onFailed(throwable: Throwable) {
-                throwable.message?.let { CommonFunction.showToast(ct, it) }
+                throwable.message?.let { showErrorToast(ct, it) }
             }
         })
 

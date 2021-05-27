@@ -27,7 +27,6 @@ class SocialPageAdapter(private val context: Context) : RecyclerView.Adapter<Soc
 
       //  var iv_image: ImageView
 
-        // antivirusPlanClickListener.onPlanBuyNowClicked(antivirusPlanArrayLists.get(getAdapterPosition()).getMembershipId(),antivirusPlanArrayLists.get(getAdapterPosition()).getSellingPrice());
         init {
 
            // iv_image = itemView.findViewById(R.id.iv_image)
@@ -35,11 +34,4 @@ class SocialPageAdapter(private val context: Context) : RecyclerView.Adapter<Soc
         }
     }
 
-    companion object {
-
-    }
-
-    init {
-
-    }
 }

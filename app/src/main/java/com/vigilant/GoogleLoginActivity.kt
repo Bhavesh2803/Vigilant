@@ -2,24 +2,20 @@ package com.vigilant
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.mssinfotech.mycity.Utility.AppSession
-import com.mssinfotech.mycity.Utility.CommonFunction
-import com.mssinfotech.mycity.Utility.Constants
+import com.mssinfotech.mycity.Utility.CommonFunction.showErrorToast
+import com.mssinfotech.mycity.Utility.CommonFunction.showSuccessToast
+import com.vigilant.Home.DashboardActivity
 import com.vigilant.Network.basic.APICallback
 import com.vigilant.Network.rest.ServiceGenerator
-import com.vigilant.Requests.LoginRequest
 import com.vigilant.Requests.SocialSignUpRequest
 import retrofit2.Response
 
@@ -109,7 +105,7 @@ val ct:Context = this
             Log.i("Google ID Token", googleIdToken)
 
             callSocialSignUpApi(googleIdToken,googleFirstName+" "+googleLastName,googleEmail,"user",googleProfilePicURL )
-            CommonFunction.showToast(ct,googleFirstName + " "+googleLastName)
+            //CommonFunction.showToast(ct,googleFirstName + " "+googleLastName)
 
         } catch (e: ApiException) {
             // Sign in was unsuccessful
@@ -128,14 +124,14 @@ val ct:Context = this
                 socialsignUp.enqueue(object : APICallback<SocialSingUpDTO>(this, true) {
 
             override fun onSuccess(response: Response<SocialSingUpDTO>) {
-                CommonFunction.showToast(ct, response.message())
+          showSuccessToast(ct, response.message())
                 startActivity(Intent(this@GoogleLoginActivity, DashboardActivity::class.java))
                 finishAffinity()
                 signOut()
             }
 
             override fun onFailed(throwable: Throwable) {
-                throwable.message?.let { CommonFunction.showToast(ct, it) }
+                throwable.message?.let { showErrorToast(ct, it) }
                 signOut()
             }
         })

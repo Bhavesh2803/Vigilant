@@ -32,6 +32,8 @@ class ReportDetailActivity : AppCompatActivity() {
         binding.recylerview.setLayoutManager(LinearLayoutManager(ct, LinearLayoutManager.HORIZONTAL, false))
         binding.recylerview.setAdapter(Adapter)
 
+        val title = intent.getStringExtra("title")
+
     }
 
     class MyViewPagerAdapter(private val mContext: Context) : PagerAdapter() {

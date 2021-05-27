@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mssinfotech.mycity.Utility.CommonFunction
+import com.mssinfotech.mycity.Utility.CommonFunction.showErrorToast
+import com.mssinfotech.mycity.Utility.CommonFunction.showSuccessToast
 import com.vigilant.CreateReport.PhotoAdapter
 import com.vigilant.Model.GetNewsListDTO.NewsListDTO
 import com.vigilant.Network.basic.APICallback
@@ -42,7 +44,7 @@ class NewsListActivity : BaseActivity() {
         getNewsList.enqueue(object : APICallback<NewsListDTO>(this, true) {
 
             override fun onSuccess(response: Response<NewsListDTO>) {
-                CommonFunction.showToast(ct, response.message())
+               showSuccessToast(ct, response.message())
 
                 val newsAdapter = response.body()?.let { NewsAdapter(ct, it) }
                 binding.recyl.setLayoutManager(LinearLayoutManager(ct))
@@ -51,7 +53,7 @@ class NewsListActivity : BaseActivity() {
             }
 
             override fun onFailed(throwable: Throwable) {
-                throwable.message?.let { CommonFunction.showToast(ct, it) }
+                throwable.message?.let { showErrorToast(ct, it) }
                 hideLoader()
             }
         })

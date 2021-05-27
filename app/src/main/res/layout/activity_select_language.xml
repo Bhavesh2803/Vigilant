@@ -62,29 +62,31 @@
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:text="Select Language"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv_english"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/theme_color"
                 app:cardCornerRadius="@dimen/_22sdp">
 
                 <RelativeLayout
+                    android:id="@+id/rl_english"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/theme_round_button_bg"
                     android:paddingHorizontal="@dimen/_12sdp"
                     android:paddingVertical="@dimen/_5sdp">
 
                     <TextView
+                        android:id="@+id/tv_english"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="ENGLISH"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15ssp"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/_15ssp" />
 
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
@@ -96,12 +98,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pashto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_22sdp">
 
                 <RelativeLayout
+                    android:id="@+id/rl_pashto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/grey_round_button_bg"
@@ -109,6 +113,7 @@
                     android:paddingVertical="@dimen/_5sdp">
 
                     <TextView
+                        android:id="@+id/tv_pashto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -126,11 +131,13 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv_dari"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/_22sdp">
 
                 <RelativeLayout
+                    android:id="@+id/rl_dari"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/grey_round_button_bg"
@@ -138,6 +145,7 @@
                     android:paddingVertical="@dimen/_5sdp">
 
                     <TextView
+                        android:id="@+id/tv_dari"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"

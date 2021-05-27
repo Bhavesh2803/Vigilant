@@ -117,7 +117,6 @@
             android:gravity="center"
             android:paddingHorizontal="@dimen/_45sdp"
             android:paddingVertical="@dimen/_7sdp"
-
             android:text="Send Alert"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
@@ -129,4 +128,101 @@
         android:layout_margin="@dimen/_5sdp"
         android:padding="@dimen/_5sdp"
         android:src="@drawable/back_icon" />
+
+    <RelativeLayout
+        android:id="@+id/rl_alert_type_popup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="@dimen/_10sdp"
+        android:background="#44000000">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_centerVertical="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+android:layout_gravity="center_horizontal"
+        android:background="@color/theme_color"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_45sdp"
+        android:paddingVertical="@dimen/_7sdp"
+        android:text="Alert Type"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold" />
+    <RadioGroup
+        android:id="@+id/alert_type_radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radio_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:buttonTint="@color/theme_color"/>
+
+        <RadioButton
+            android:id="@+id/radio_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:text="Medium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:buttonTint="@color/theme_color"/>
+
+        <RadioButton
+            android:id="@+id/radio_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:buttonTint="@color/theme_color"/>
+
+    </RadioGroup>
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+  android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:cardElevation="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/red_color"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_45sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:text="Send Alert"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </RelativeLayout>

@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="@dimen/_72sdp"
-    android:layout_height="@dimen/_70sdp"
-    android:layout_marginRight="@dimen/_20sdp"
-    android:background="@drawable/grey_boarder_bg"
-    android:layout_marginEnd="@dimen/_20sdp">
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="@dimen/_80sdp"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_marginLeft="@dimen/_10sdp">
+
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/add_img"
-        android:padding="@dimen/_15sdp"/>
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:src="@drawable/add_profile_image"
+        android:scaleType="fitXY"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/theme_boarder_layout" />
+    <ImageView
+        android:id="@+id/iv_remove"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:padding="@dimen/_2sdp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/add_icon_red"
+        android:rotation="45"/>
 </RelativeLayout>

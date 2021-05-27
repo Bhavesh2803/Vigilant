@@ -1,6 +1,10 @@
 package com.vigilant.Network.rest
 
+import com.mssinfotech.mycity.Utility.AppSession
+import com.mssinfotech.mycity.Utility.Constants
 import com.vigilant.Network.basic.Api
+import com.vigilant.Utility.App
+import com.vigilant.Utility.VigilantApplication
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -44,7 +48,8 @@ object ServiceGenerator {
             if(header){
 
                     //Log.e("Bearer","---: "+ key)
-                requestBuilder.addHeader("Authorization", "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOWI3MjFjODY5MTcxMDFlYzJhNjBlZCIsImlhdCI6MTYyMTAwMTI0OH0.KQQTY67hA6DM75GbsWmYq6l2P_F29slNCcFjrad012brVrgpwKXeuF5_xHVGsWZv4twLJ-Y_uRt4kVJkoWqzyCLRApyDPhp-2Cb0Fg2d0HVrmb-I5XkKCEGxkqOmJYqgsON7gs7RLnvafPgpTb8RviVpCx0iDDGsf13Qt3MkFbc")
+                        val token = AppSession.getValue(VigilantApplication.context,Constants.ACCESS_TOKEN)
+                requestBuilder.addHeader("Authorization", "Bearer $token")
                 }
 
                 val request: Request = requestBuilder.build()

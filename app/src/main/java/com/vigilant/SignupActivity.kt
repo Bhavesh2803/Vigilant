@@ -5,19 +5,17 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.style.ClickableSpan
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import com.jakewharton.rxbinding2.widget.RxCompoundButton
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.mssinfotech.mycity.Utility.CommonFunction
+import com.mssinfotech.mycity.Utility.CommonFunction.showInfoToast
 import com.mssinfotech.mycity.Utility.Constants
+import com.vigilant.Home.DashboardActivity
 import com.vigilant.Network.basic.APICallback
-import com.vigilant.Network.basic.Api
 import com.vigilant.Network.rest.ServiceGenerator
-import com.vigilant.Requests.LoginRequest
 import com.vigilant.Requests.SignUpRequest
-import com.vigilant.Utils.Util
+import com.vigilant.Utility.Util
 import com.vigilant.databinding.ActivitySignupBinding
 import io.reactivex.Observable
 import io.reactivex.functions.Function6
@@ -26,7 +24,8 @@ import retrofit2.Response
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
-    var user_type = ""
+    var user_type = "citizen"
+    var allField = false
     var ct = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,20 +36,30 @@ class SignupActivity : AppCompatActivity() {
         initObservable()
 
         binding.tvSignup.setOnClickListener {
-            var name = binding.edtFullName.text.toString()
-            var number = binding.edtFullName.text.toString()
-            var email_id = binding.edtFullName.text.toString()
-            var address = binding.edtFullName.text.toString()
-            var password = binding.edtFullName.text.toString()
-            callSignupApi()
+            if (allField) {
+                callSignupApi()
+            } else {
+                showInfoToast(ct, "Please fill all field")
+            }
+
         }
 
+        binding.tvAgent.setOnClickListener {
+            binding.tvAgent.setTextColor(resources.getColor(R.color.theme_color))
+            binding.tvCitizen.setTextColor(resources.getColor(R.color.gray_text_color))
+            user_type = "Agent"
+        }
+        binding.tvCitizen.setOnClickListener {
+            binding.tvCitizen.setTextColor(resources.getColor(R.color.theme_color))
+            binding.tvAgent.setTextColor(resources.getColor(R.color.gray_text_color))
+            user_type = "User"
+        }
     }
 
     private fun setupClickableTextView(termsTextView: TextView) {
         val termsOfServicesClick = object : ClickableSpan() {
             override fun onClick(p0: View) {
-                startActivity(Intent(this@SignupActivity, DashboardActivity::class.java))
+                finish()
             }
         }
 
@@ -76,12 +85,12 @@ class SignupActivity : AppCompatActivity() {
         loginCall.enqueue(object : APICallback<Void>(this, true) {
 
             override fun onSuccess(response: Response<Void>) {
-                CommonFunction.showToast(ct, response.message())
+                CommonFunction.showSuccessToast(ct, "SignUp")
                 startActivity(Intent(this@SignupActivity, DashboardActivity::class.java))
             }
 
             override fun onFailed(throwable: Throwable) {
-                throwable.message?.let { CommonFunction.showToast(ct, it) }
+                throwable.message?.let { CommonFunction.showErrorToast(ct, it) }
             }
         })
 
@@ -114,21 +123,21 @@ class SignupActivity : AppCompatActivity() {
                 mAddressObservable,
                 mPasswordObservable,
                 mConfirmPasswordObservable,
-                Function6(fun(a: CharSequence,  b: CharSequence, c:CharSequence, d: CharSequence,e: CharSequence,f: CharSequence): Boolean {
+                Function6(fun(a: CharSequence, b: CharSequence, c: CharSequence, d: CharSequence, e: CharSequence, f: CharSequence): Boolean {
                     return a.isNotEmpty() && b.isNotEmpty() && c.isNotEmpty() && d.isNotEmpty() && e.isNotEmpty() && f.isNotEmpty()
-                            && b.length == 10 && e.length >5 && f.length >5
+                            && b.length == 10 && e.length > 5 && f.length > 5
 
                 })
         )
 
         observable.subscribe(object : DisposableObserver<Boolean?>() {
             override fun onNext(aBoolean: Boolean) {
-                if (aBoolean){
+                if (aBoolean) {
                     // bottomSheet.btnOtpSubmit.updateButtonState(1)
 
                     binding.tvSignup.setBackgroundColor(Color.parseColor(Constants.THEME_COLOR));
-
-                } else{
+                    allField = true
+                } else {
                     // bottomSheet.btnOtpSubmit.updateButtonState(2)
 
                     binding.tvSignup.setBackgroundColor(Color.GRAY);

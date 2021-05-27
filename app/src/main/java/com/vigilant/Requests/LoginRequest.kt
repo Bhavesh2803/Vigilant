@@ -8,5 +8,8 @@ data class LoginRequest(
 	val email: String? = null,
 
 	@field:SerializedName("password")
-	val password: String? = null
+	val password: String? = null,
+
+		@field:SerializedName("language")
+	val language: String? = null
 )

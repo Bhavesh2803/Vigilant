@@ -18,6 +18,7 @@ import android.util.Base64
 import android.util.Patterns
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import es.dmoral.toasty.Toasty
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
@@ -584,8 +585,14 @@ object CommonFunction {
         return if (Math.abs(angle) < PI) false else true
     }
 
-    fun showToast(ct:Context,message:String){
-        Toast.makeText(ct, message, Toast.LENGTH_SHORT).show()
+    fun showErrorToast(ct:Context,message:String){
+        Toasty.error(ct, message, Toast.LENGTH_SHORT).show()
+    }
+    fun showSuccessToast(ct:Context,message:String){
+        Toasty.success(ct, message, Toast.LENGTH_SHORT).show()
+    }
+    fun showInfoToast(ct:Context,message:String){
+        Toasty.info(ct, message, Toast.LENGTH_SHORT).show()
     }
     fun Angle2D(y1: Double, x1: Double, y2: Double, x2: Double): Double {
         var dtheta: Double

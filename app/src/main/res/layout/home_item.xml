@@ -15,6 +15,7 @@ android:padding="@dimen/_5sdp"
         app:cardBackgroundColor="@color/white">
 
         <RelativeLayout
+            android:id="@+id/rl_main_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edit_field_bg"
@@ -42,7 +43,7 @@ android:padding="@dimen/_5sdp"
                     android:text="Report ID: FGH234GHJ"
                     android:textColor="@color/text_color"
                     android:textStyle="bold"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_10ssp" />
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -54,7 +55,7 @@ android:padding="@dimen/_5sdp"
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
-                    android:id="@+id/tv_location"
+                    android:id="@+id/tv_wanted_for"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -63,7 +64,7 @@ android:padding="@dimen/_5sdp"
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
-                    android:id="@+id/tv_priority"
+                    android:id="@+id/tv_last_seen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"

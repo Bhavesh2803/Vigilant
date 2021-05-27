@@ -65,6 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="Agent"
+                        android:textStyle="bold"
                         android:textColor="@color/gray_text_color"
                         android:textSize="@dimen/_14ssp" />
                 </RelativeLayout>
@@ -103,6 +104,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:background="@drawable/edit_field_bg"
+                    android:inputType="textEmailAddress"
                     android:hint="Email Id"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
@@ -130,6 +132,7 @@
                     android:layout_marginTop="@dimen/_15sdp"
                     android:background="@drawable/edit_field_bg"
                     android:hint="Password"
+                    android:inputType="textPassword"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_color"
@@ -143,6 +146,7 @@
                     android:layout_marginTop="@dimen/_15sdp"
                     android:background="@drawable/edit_field_bg"
                     android:hint="Confirm Password"
+                    android:inputType="textPassword"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_color"

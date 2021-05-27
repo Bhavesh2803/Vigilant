@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mssinfotech.mycity.Utility.CommonFunction
+import com.mssinfotech.mycity.Utility.CommonFunction.showErrorToast
+import com.mssinfotech.mycity.Utility.CommonFunction.showSuccessToast
 import com.vigilant.Model.GetNewsListDTO.NewsListDTO
 import com.vigilant.Network.basic.APICallback
 import com.vigilant.Network.basic.BaseActivity
@@ -39,7 +41,7 @@ var ct:Context = this
         getvideosList.enqueue(object : APICallback<GetAllVideosDTO>(this, true) {
 
             override fun onSuccess(response: Response<GetAllVideosDTO>) {
-
+                showSuccessToast(ct,response.message() )
                 val videoListAdapter = response.body()?.let { VideoListAdapter(ct, it) }
                 binding.recyl.setLayoutManager(LinearLayoutManager(ct))
                 binding.recyl.setAdapter(videoListAdapter)
@@ -47,7 +49,7 @@ var ct:Context = this
             }
 
             override fun onFailed(throwable: Throwable) {
-                throwable.message?.let { CommonFunction.showToast(ct, it) }
+                throwable.message?.let { showErrorToast(ct, it) }
                 hideLoader()
             }
         })
