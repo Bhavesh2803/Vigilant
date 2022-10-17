@@ -1,0 +1,67 @@
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: mingc/android-build-box:1.19.0
+
+pipelines:
+  branches:
+    '{task-*,feature-*,bugfix-*}':
+      - step:
+          name: Build Debug
+          caches:
+            - gradle
+            - gradle-wrapper
+            - android-emulator
+          script:
+            - chmod +x gradlew
+            - echo 'Running unit test'
+            - ./gradlew testProdDebugUnitTest
+            - echo 'Feature or task branch building'
+            - echo "$SIGNING_JKS_FILE" | base64 -d > moneyloji.jks
+            - ./gradlew assembleProdDebug
+            - echo 'Pushing generated APK to bitbucket downloads'
+            - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"./app/build/outputs/apk/prod/debug/app-prod-debug.apk"
+          artifacts:
+            - app/build/outputs/**
+    '{master,hotfix-*}':
+      - step:
+          name: Build release APK and publish
+          caches:
+            - gradle
+            - gradle-wrapper
+            - android-emulator
+          script:
+            - chmod +x gradlew
+            - echo 'Running unit test'
+            - ./gradlew testProdReleaseUnitTest
+      - parallel:
+          - step:
+              name: Build downloadable APK file
+              caches:
+                - gradle
+                - gradle-wrapper
+                - android-emulator
+              script:
+                - chmod +x gradlew
+                - echo 'Creating build to download'
+                - echo "$SIGNING_JKS_FILE" | base64 -d > moneyloji.jks
+                - ./gradlew assembleProdRelease
+                - echo 'Pushing generated APK to bitbucket downloads'
+                - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"./app/build/outputs/apk/prod/release/app-prod-release.apk"
+          - step:
+              name: Publish app bundle to play store
+              caches:
+                - gradle
+                - gradle-wrapper
+                - android-emulator
+              script:
+                - chmod +x gradlew
+                - echo 'Generating signing keys and google JSON'
+                - echo "$GOOGLE_API_KEY_JSON" | base64 -d > google_play_api_key.json
+                - echo "$SIGNING_JKS_FILE" | base64 -d > moneyloji.jks
+                - echo 'Creating release build and pushing apk to Play Store'
+                - ./gradlew publishProdReleaseBundle
+
+definitions:
+  caches:
+    gradle-wrapper: ~/.gradle/wrapper
+    android-emulator: $ANDROID_HOME/system-images/android-21
